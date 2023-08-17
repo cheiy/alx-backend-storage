@@ -23,8 +23,8 @@ def cache(method: Callable) -> Callable:
         if result:
             return result.decode('utf-8')
         result = method(url)
-        redis_db.set("count:{}".format(url, 0))
-        redis_db.setex("result:{}".format(10, result))
+        redis_db.set("count:{}".format(url), 0)
+        redis_db.setex("result:{}".format(result), 10)
         return result
     return invoker
 
