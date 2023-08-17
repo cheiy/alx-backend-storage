@@ -24,13 +24,13 @@ def cacher(method: Callable) -> Callable:
         """
         Wrapper function for caching the output
         """
-        redis_db.incr("count:{}".format(url))
-        result = redis_db.get("result:{}".format(url))
+        redis_db.incr(f'count:{url}')
+        result = redis_db.get(f'result:{url}')
         if result:
             return result.decode('utf-8')
         result = method(url)
-        redis_db.set("count:{}".format(url), 0)
-        redis_db.setex("result:{}".format(url), 10, result)
+        redis_db.set(f'count:{url}', 0)
+        redis_db.setex(f'result:{url}', 10, result)
         return result
     return invoker
 
