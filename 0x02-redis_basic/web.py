@@ -15,7 +15,7 @@ Redis instance
 """
 
 
-def cache(method: Callable) -> Callable:
+def cacher(method: Callable) -> Callable:
     """
     Caches the fetched data
     """
@@ -35,7 +35,7 @@ def cache(method: Callable) -> Callable:
     return invoker
 
 
-@cache
+@cacher
 def get_page(url: str) -> str:
     """
     Get page function that uses requests to get given url
