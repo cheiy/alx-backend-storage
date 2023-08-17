@@ -38,5 +38,6 @@ def cache(method: Callable) -> Callable:
 @cache
 def get_page(url: str) -> str:
     """
+    Get page function that uses requests to get given url
     """
     return requests.get(url).text
