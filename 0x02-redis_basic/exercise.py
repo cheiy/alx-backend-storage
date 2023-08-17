@@ -66,8 +66,8 @@ def replay(fn: Callable) -> None:
     func_outputs = redis_store.lrange(out_key, 0, -1)
     for func_input, func_output in zip(func_inputs, func_outputs):
         print('{}(*{}) -> {}'.format(func_name,
-                                     func_input.decode('utf-x8'),
-                                     func_output,))
+                                     func_input.decode('utf-8'),
+                                     func_output))
 
 
 class Cache:
