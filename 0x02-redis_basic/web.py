@@ -10,6 +10,9 @@ from typing import Callable
 
 
 redis_db = redis.Redis()
+"""
+Redis instance
+"""
 
 
 def cache(method: Callable) -> Callable:
