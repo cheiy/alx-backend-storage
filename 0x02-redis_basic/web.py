@@ -40,4 +40,5 @@ def get_page(url: str) -> str:
     """
     Get page function that uses requests to get given url
     """
+    redis_db.incr(f'count:{url}')
     return requests.get(url).text
