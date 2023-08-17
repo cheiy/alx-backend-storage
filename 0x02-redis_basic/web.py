@@ -18,13 +18,16 @@ def cache(method: Callable) -> Callable:
     """
     @wraps(method)
     def invoker(url) -> str:
+        """
+        Wrapper function for caching the output
+        """
         redis_db.incr("count:{}".format(url))
         result = redis_db.get("result:{}".format(url))
         if result:
             return result.decode('utf-8')
         result = method(url)
         redis_db.set("count:{}".format(url), 0)
-        redis_db.setex("result:{}".format(result), 10)
+        redis_db.setex("result:{}".format(url), 10, result)
         return result
     return invoker
 
