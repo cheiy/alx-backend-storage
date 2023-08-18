@@ -1,0 +1,2 @@
+//Script inserts a document in the collection named school
+db.school.insertOne( { name: "Holberton School" } );
