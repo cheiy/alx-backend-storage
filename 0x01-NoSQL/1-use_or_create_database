@@ -1,0 +1,2 @@
+//Script switches to a database or creates the database if it does not exist
+use my_db
