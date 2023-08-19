@@ -11,4 +11,5 @@ def insert_school(mongo_collection, **kwargs):
     post = {}
     for item in kwargs:
         post.update({item: kwargs.get(item)})
-    return mongo_collection.insert_one(post)
+    insert = mongo_collection.insert_one(post)
+    return insert.inserted_id
